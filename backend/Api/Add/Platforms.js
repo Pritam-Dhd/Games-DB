@@ -1,5 +1,5 @@
 import axios from "axios";
-import Platform from '../Schema.js';
+import Platform from '../../Schema/PlatformSchema.js';
 
 const key = '31fee1b1831a4937a5d01fa95657cff4';
 const api = 'https://api.rawg.io/api/platforms?category=&key=';
