@@ -3,6 +3,7 @@ import express from "express"; // Import the Express framework
 import mongoose from "mongoose"; // Import Mongoose for MongoDB connectivity
 import AdminJSExpress from "@adminjs/express"; // Import AdminJS Express module
 import adminJs from './Admin.js'; // Import your AdminJS configuration
+import { fetchAndSavePlatforms } from './Fetch/Platforms.js';
 
 // Create an Express application instance
 const app = express();
@@ -15,6 +16,16 @@ app.get("/",(req,res)=>{
     res.send("Hello World")
 })
 
+app.post("/add-platforms",async(req,res)=>{
+    try {
+        // Call the fetchAndSavePlatforms function to fetch and save platforms
+        await fetchAndSavePlatforms();
+        res.send("Platforms added successfully");
+    } catch (error) {
+        console.error('Error adding platforms:', error.message);
+        res.send("Error adding platforms");
+    }
+})
 // Run the server.
 const run = async () => {
     // Connect to MongoDB
