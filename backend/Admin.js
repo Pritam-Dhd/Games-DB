@@ -5,6 +5,7 @@ import Platform from "./Schema/PlatformSchema.js"; // Import the Mongoose Platfo
 import Game  from "./Schema/GamesSchema.js";
 import Genre from "./Schema/GenreSchema.js";
 import Publisher from "./Schema/PublisherSchema.js";
+import Store from "./Schema/StoreSchema.js";
 
 // Register the AdminJS Mongoose adapter to work with Mongoose models
 AdminJS.registerAdapter(AdminJSMongoose);
@@ -23,6 +24,9 @@ const adminJs = new AdminJS({
     },
     {
       resource:Publisher
+    },
+    {
+      resource:Store
     }
   ],
   rootPath: "/admin", // Specify the root path for the AdminJS dashboard

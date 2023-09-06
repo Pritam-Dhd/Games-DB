@@ -6,6 +6,7 @@ import adminJs from './Admin.js'; // Import your AdminJS configuration
 import { fetchAndSavePlatforms } from './Api/Add/Platforms.js';
 import { fetchAndSaveGenres } from './Api/Add/Genre.js';
 import { fetchAndSavePublishers } from "./Api/Add/Publisher.js";
+import { fetchAndSaveStores } from "./Api/Add/Store.js";
 
 // Create an Express application instance
 const app = express();
@@ -47,6 +48,16 @@ app.post("/add-publishers",async(req,res)=>{
     } catch (error) {
         console.error('Error adding Publishers:', error.message);
         res.send("Error adding Publishers");
+    }
+})
+
+app.post("/add-stores",async(req,res)=>{
+    try {
+        await fetchAndSaveStores();
+        res.send("Stores added successfully");
+    } catch (error) {
+        console.error('Error adding Stores:', error.message);
+        res.send("Error adding Stores");
     }
 })
 
