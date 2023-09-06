@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const gamesSchema = new mongoose.Schema({
   name: { type: String },
-  platform_ids: [
+  platforms: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "platforms",

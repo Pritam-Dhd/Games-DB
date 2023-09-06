@@ -3,7 +3,9 @@ import express from "express"; // Import the Express framework
 import mongoose from "mongoose"; // Import Mongoose for MongoDB connectivity
 import AdminJSExpress from "@adminjs/express"; // Import AdminJS Express module
 import adminJs from './Admin.js'; // Import your AdminJS configuration
+import { fetchAndSavePlatforms } from './Api/Add/Platforms.js';
 import { fetchAndSaveGenres } from './Api/Add/Genre.js';
+import { fetchAndSavePublishers } from "./Api/Add/Publisher.js";
 
 // Create an Express application instance
 const app = express();
@@ -35,6 +37,16 @@ app.post("/add-genres",async(req,res)=>{
     } catch (error) {
         console.error('Error adding genres:', error.message);
         res.send("Error adding genres");
+    }
+})
+
+app.post("/add-publishers",async(req,res)=>{
+    try {
+        await fetchAndSavePublishers();
+        res.send("Publishers added successfully");
+    } catch (error) {
+        console.error('Error adding Publishers:', error.message);
+        res.send("Error adding Publishers");
     }
 })
 
