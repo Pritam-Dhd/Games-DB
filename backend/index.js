@@ -7,6 +7,7 @@ import { fetchAndSavePlatforms } from './Api/Add/Platforms.js';
 import { fetchAndSaveGenres } from './Api/Add/Genre.js';
 import { fetchAndSavePublishers } from "./Api/Add/Publisher.js";
 import { fetchAndSaveStores } from "./Api/Add/Store.js";
+import { fetchAndSaveGame } from "./Api/Add/Game.js";
 
 // Create an Express application instance
 const app = express();
@@ -58,6 +59,17 @@ app.post("/add-stores",async(req,res)=>{
     } catch (error) {
         console.error('Error adding Stores:', error.message);
         res.send("Error adding Stores");
+    }
+})
+
+app.post("/add-game/:id",async(req,res)=>{
+    const id = req.params.id;
+    try {
+        await fetchAndSaveGame({id});
+        res.send("Game added successfully");
+    } catch (error) {
+        console.error('Error adding Game:', error.message);
+        res.send("Error adding Game");
     }
 })
 

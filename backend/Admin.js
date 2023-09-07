@@ -2,7 +2,7 @@
 import AdminJS from "adminjs"; // Import AdminJS library
 import * as AdminJSMongoose from '@adminjs/mongoose'; // Import AdminJS Mongoose adapter
 import Platform from "./Schema/PlatformSchema.js"; // Import the Mongoose Platform model from Schema.js
-import Game  from "./Schema/GamesSchema.js";
+import Game  from "./Schema/GameSchema.js";
 import Genre from "./Schema/GenreSchema.js";
 import Publisher from "./Schema/PublisherSchema.js";
 import Store from "./Schema/StoreSchema.js";
