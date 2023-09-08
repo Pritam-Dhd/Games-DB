@@ -39,3 +39,12 @@ export const fetchAndSaveStores = async () => {
     console.error("Error fetching and saving Publisher:", error.message);
   }
 };
+
+export const getStores = async () => {
+  try {
+    let stores = await Store.find();
+    return stores;
+  } catch (error) {
+    console.error("Error getting Stores:", error.message);
+  }
+};

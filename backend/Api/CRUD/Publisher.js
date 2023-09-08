@@ -39,3 +39,12 @@ export const fetchAndSavePublishers = async () => {
     console.error("Error fetching and saving Publisher:", error.message);
   }
 };
+
+export const getPublishers = async () => {
+  try {
+    let publishers = await Publisher.find();
+    return publishers;
+  } catch (error) {
+    console.error("Error getting Publisher:", error.message);
+  }
+};

@@ -82,7 +82,7 @@ export const fetchAndSaveGame = async ({ id }) => {
     if (!existingGame) {
       let result = await Game.create({
         name,
-        description:description_raw,
+        description: description_raw,
         rating,
         platforms: platformIds,
         publishers: publisherIds,
@@ -101,5 +101,14 @@ export const fetchAndSaveGame = async ({ id }) => {
     }
   } catch (error) {
     console.error("Error fetching and saving Game:", error.message);
+  }
+};
+
+export const getGames = async () => {
+  try {
+    let games = await Game.find();
+    return games;
+  } catch (error) {
+    console.error("Error getting Games:", error.message);
   }
 };

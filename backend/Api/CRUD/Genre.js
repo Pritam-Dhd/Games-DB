@@ -39,3 +39,13 @@ export const fetchAndSaveGenres = async () => {
     console.error("Error fetching and saving genres:", error.message);
   }
 };
+
+// To get the genres
+export const getGenres = async () => {
+  try {
+    let genres = await Genre.find();
+    return genres;
+  } catch (error) {
+    console.error("Error getting Genres:", error.message);
+  }
+};

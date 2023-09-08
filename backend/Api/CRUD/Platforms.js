@@ -41,3 +41,12 @@ export const fetchAndSavePlatforms = async () => {
     console.error("Error fetching and saving platforms:", error.message);
   }
 };
+
+export const getPlatforms = async () => {
+  try {
+    let platforms = await Platform.find();
+    return platforms;
+  } catch (error) {
+    console.error("Error getting Platforms:", error.message);
+  }
+};
