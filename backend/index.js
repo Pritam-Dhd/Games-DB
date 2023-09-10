@@ -2,6 +2,7 @@ import express from "express"; // Import the Express framework
 import mongoose from "mongoose"; // Import Mongoose for MongoDB connectivity
 import AdminJSExpress from "@adminjs/express"; // Import AdminJS Express module
 import adminJs from "./Admin.js"; // Import your AdminJS configuration
+import cors from "cors"
 import gamesRoutes from "./Routes/Game.js";
 import platformRoutes from "./Routes/Platform.js";
 import publisherRoutes from "./Routes/Publisher.js";
@@ -11,6 +12,7 @@ import storesRoute from "./Routes/Store.js";
 // Create an Express application instance
 const app = express();
 
+app.use(cors());
 // Build and use a router to handle AdminJS routes.
 const router = AdminJSExpress.buildRouter(adminJs); // Create an AdminJS router using your configuration
 app.use(adminJs.options.rootPath, router); // Use the AdminJS router with the specified root path
