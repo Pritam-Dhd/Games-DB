@@ -5,7 +5,6 @@ import axios from "axios";
 const Dropdown = ({ item }) => {
   const [items, setItems] = useState([]);
   const [limitItems, setLimitItems] = useState([]);
-  console.log(item);
   let navigate = useNavigate();
 
   useEffect(() => {
