@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { fetchCategoryData } from "../Api/FetchApi";
 
 const Dropdown = ({ item }) => {
   const [items, setItems] = useState([]);
@@ -8,10 +8,18 @@ const Dropdown = ({ item }) => {
   let navigate = useNavigate();
 
   useEffect(() => {
+    fetchCategoryData({ category: item })
+      .then((data) => {
+        setItems(data);
+        setLimitItems(data.slice(0, 6));
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
+  useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/get-${item}`);
-        const { data } = response;
+        const data = await fetchCategoryData({ category: item });
         setItems(data);
         setLimitItems(data.slice(0, 6));
       } catch (error) {
@@ -46,16 +54,16 @@ const Dropdown = ({ item }) => {
             </button>
           </li>
         ))}
-        <li key='more'>
-            <button
-              className="dropdown-item text-dark fw-bold"
-              onClick={() => {
-                navigate(`/`);
-              }}
-            >
-              Show More ...
-            </button>
-          </li>
+        <li key="more">
+          <button
+            className="dropdown-item text-dark fw-bold"
+            onClick={() => {
+              navigate(`/${item}`);
+            }}
+          >
+            Show More ...
+          </button>
+        </li>
       </ul>
     </li>
   );

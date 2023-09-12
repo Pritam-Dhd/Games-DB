@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Header from "../Components/Header";
 import Card from "../Components/Card";
 import Pagination from "../Components/Pagination";
-import axios from "axios";
+import { fetchGamesData } from "../Api/FetchApi";
 
 const Home = () => {
   const [games, setGames] = useState([]);
@@ -10,17 +10,9 @@ const Home = () => {
   const itemsPerPage = 10;
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("http://localhost:5000/get-games");
-        const { data } = response;
-        console.log(data);
-        setGames(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchData();
+    fetchGamesData()
+      .then((data) => setGames(data))
+      .catch((error) => console.log(error));
   }, []);
 
   // Calculate the index range for the current page

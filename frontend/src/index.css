@@ -11,3 +11,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.category{
+  background-color: rgba(152, 164, 201, 0.249);
+  border: 2px black;
+}
+
+.category:hover{
+  background-color: rgb(41, 42, 42);
+  color: whitesmoke;
+}
